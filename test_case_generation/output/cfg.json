@@ -1,0 +1,196 @@
+{
+  "nodes": [
+    {
+      "id": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:14:11",
+      "name": "COBOL: IF",
+      "entityType": "Statement",
+      "properties": {
+        "typeId": 0,
+        "stmtStartLineNumber": 14,
+        "stmtEndLineNumber": 26,
+        "path": "path\\to\\SIMPLEBONUSEVAL",
+        "stmtText": "IF",
+        "programName": "SIMPLEBONUSEVAL",
+        "uniqueId": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:14:11",
+        "insideClosure": false
+      }
+    },
+    {
+      "id": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:15:15",
+      "name": "COBOL: IF",
+      "entityType": "Statement",
+      "properties": {
+        "typeId": 0,
+        "stmtStartLineNumber": 15,
+        "stmtEndLineNumber": 19,
+        "path": "path\\to\\SIMPLEBONUSEVAL",
+        "stmtText": "IF",
+        "programName": "SIMPLEBONUSEVAL",
+        "uniqueId": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:15:15",
+        "insideClosure": false
+      }
+    },
+    {
+      "id": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:16:19",
+      "name": "COBOL: COMPUTE",
+      "entityType": "Statement",
+      "properties": {
+        "typeId": 0,
+        "stmtStartLineNumber": 16,
+        "stmtEndLineNumber": 16,
+        "path": "path\\to\\SIMPLEBONUSEVAL",
+        "stmtText": "COMPUTE",
+        "programName": "SIMPLEBONUSEVAL",
+        "uniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:16:19",
+        "insideClosure": false
+      }
+    },
+    {
+      "id": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:18:19",
+      "name": "COBOL: COMPUTE",
+      "entityType": "Statement",
+      "properties": {
+        "typeId": 0,
+        "stmtStartLineNumber": 18,
+        "stmtEndLineNumber": 18,
+        "path": "path\\to\\SIMPLEBONUSEVAL",
+        "stmtText": "COMPUTE",
+        "programName": "SIMPLEBONUSEVAL",
+        "uniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:18:19",
+        "insideClosure": false
+      }
+    },
+    {
+      "id": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:21:15",
+      "name": "COBOL: IF",
+      "entityType": "Statement",
+      "properties": {
+        "typeId": 0,
+        "stmtStartLineNumber": 21,
+        "stmtEndLineNumber": 25,
+        "path": "path\\to\\SIMPLEBONUSEVAL",
+        "stmtText": "IF",
+        "programName": "SIMPLEBONUSEVAL",
+        "uniqueId": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:21:15",
+        "insideClosure": false
+      }
+    },
+    {
+      "id": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:22:19",
+      "name": "COBOL: COMPUTE",
+      "entityType": "Statement",
+      "properties": {
+        "typeId": 0,
+        "stmtStartLineNumber": 22,
+        "stmtEndLineNumber": 22,
+        "path": "path\\to\\SIMPLEBONUSEVAL",
+        "stmtText": "COMPUTE",
+        "programName": "SIMPLEBONUSEVAL",
+        "uniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:22:19",
+        "insideClosure": false
+      }
+    },
+    {
+      "id": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:24:19",
+      "name": "COBOL: COMPUTE",
+      "entityType": "Statement",
+      "properties": {
+        "typeId": 0,
+        "stmtStartLineNumber": 24,
+        "stmtEndLineNumber": 24,
+        "path": "path\\to\\SIMPLEBONUSEVAL",
+        "stmtText": "COMPUTE",
+        "programName": "SIMPLEBONUSEVAL",
+        "uniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:24:19",
+        "insideClosure": false
+      }
+    },
+    {
+      "id": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:28:11",
+      "name": "COBOL: COMPUTE",
+      "entityType": "Statement",
+      "properties": {
+        "typeId": 0,
+        "stmtStartLineNumber": 28,
+        "stmtEndLineNumber": 28,
+        "path": "path\\to\\SIMPLEBONUSEVAL",
+        "stmtText": "COMPUTE",
+        "programName": "SIMPLEBONUSEVAL",
+        "uniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:28:11",
+        "insideClosure": false
+      }
+    },
+    {
+      "id": "Statement:COBOL:STOP RUN:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:30:11",
+      "name": "COBOL: STOP RUN",
+      "entityType": "Statement",
+      "properties": {
+        "typeId": 0,
+        "stmtStartLineNumber": 30,
+        "stmtEndLineNumber": 30,
+        "path": "path\\to\\SIMPLEBONUSEVAL",
+        "stmtText": "STOP RUN",
+        "programName": "SIMPLEBONUSEVAL",
+        "uniqueId": "Statement:COBOL:STOP RUN:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:30:11",
+        "insideClosure": false
+      }
+    }
+  ],
+  "edges": [
+    {
+      "sourceUniqueId": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:14:11",
+      "targetUniqueId": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:15:15",
+      "relationName": "TrueBranch"
+    },
+    {
+      "sourceUniqueId": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:15:15",
+      "targetUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:16:19",
+      "relationName": "TrueBranch"
+    },
+    {
+      "sourceUniqueId": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:15:15",
+      "targetUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:18:19",
+      "relationName": "FalseBranch"
+    },
+    {
+      "sourceUniqueId": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:14:11",
+      "targetUniqueId": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:21:15",
+      "relationName": "FalseBranch"
+    },
+    {
+      "sourceUniqueId": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:21:15",
+      "targetUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:22:19",
+      "relationName": "TrueBranch"
+    },
+    {
+      "sourceUniqueId": "Statement:COBOL:IF:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:21:15",
+      "targetUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:24:19",
+      "relationName": "FalseBranch"
+    },
+    {
+      "sourceUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:16:19",
+      "targetUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:28:11",
+      "relationName": "Statement_SUCCESSOR_Statement"
+    },
+    {
+      "sourceUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:18:19",
+      "targetUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:28:11",
+      "relationName": "Statement_SUCCESSOR_Statement"
+    },
+    {
+      "sourceUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:22:19",
+      "targetUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:28:11",
+      "relationName": "Statement_SUCCESSOR_Statement"
+    },
+    {
+      "sourceUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:24:19",
+      "targetUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:28:11",
+      "relationName": "Statement_SUCCESSOR_Statement"
+    },
+    {
+      "sourceUniqueId": "Statement:COBOL:COMPUTE:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:28:11",
+      "targetUniqueId": "Statement:COBOL:STOP RUN:SIMPLEBONUSEVAL:SIMPLEBONUSEVAL:30:11",
+      "relationName": "Statement_SUCCESSOR_Statement"
+    }
+  ]
+}

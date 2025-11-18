@@ -1,0 +1,38 @@
+[
+  {
+    "path_id": 1,
+    "inputs": {
+      "EMP-DEPT": "\"HR \"",
+      "EMP-AGE": "64",
+      "EMP-SALARY": "29000",
+      "BONUS": "1000"
+    }
+  },
+  {
+    "path_id": 2,
+    "inputs": {
+      "EMP-DEPT": "\"HR \"",
+      "EMP-AGE": "5",
+      "EMP-SALARY": "28700",
+      "BONUS": "700"
+    }
+  },
+  {
+    "path_id": 3,
+    "inputs": {
+      "EMP-DEPT": "\"ABC\"",
+      "EMP-AGE": "45",
+      "EMP-SALARY": "28900",
+      "BONUS": "900"
+    }
+  },
+  {
+    "path_id": 4,
+    "inputs": {
+      "EMP-DEPT": "\"ACB\"",
+      "EMP-AGE": "24",
+      "EMP-SALARY": "28600",
+      "BONUS": "600"
+    }
+  }
+]
