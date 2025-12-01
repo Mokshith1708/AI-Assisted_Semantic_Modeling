@@ -69,117 +69,9 @@ def visit_RelationCombinedComparison_corrected(self, node: ASTNode):
         
     return result_expr
 
-#================================================================================
-# Class C Visitor 2: DataRedefinesClause
-#================================================================================
-
-# Grammar Rule:
-# DataRedefinesClause : REDEFINES DataName ;
-
-# ------------------------------------------------------------------------------
-# Original Generated Visitor (Class C)
-# ------------------------------------------------------------------------------
-# The LLM may fail to correctly implement REDEFINES because it requires
-# non-local reasoning. It needs to find the variable being redefined and link
-# the new variable to the same physical memory space. A failing implementation
-# might return a simple stub or try to create a new variable.
-def visit_DataRedefinesClause_original(self, node: ASTNode):
-    data_name_node = _find_child_node(node, 'DataName')
-    redefined_base_name = _get_node_text(data_name_node)
-    print(f"[WARNING] REDEFINES for {redefined_base_name} is not fully implemented.")
-    return None
-
-# ------------------------------------------------------------------------------
-# Corrected Visitor
-# ------------------------------------------------------------------------------
-# The corrected visitor resolves the name of the variable being redefined,
-# finds its physical Z3 variable (the bit vector representing its memory),
-# and returns this information to the parent `DataDescriptionEntryFormat1`
-# visitor. The parent visitor will then use this existing physical variable
-# for the new data item, effectively creating a redefinition.
-def visit_DataRedefinesClause_corrected(self, node: ASTNode):
-    data_name_node = _find_child_node(node, 'DataName')
-    redefined_base_name = _get_node_text(data_name_node)
-
-    # Resolve the full name of the variable being redefined
-    redefined_full_name = self.resolve_variable(redefined_base_name, []) # Assumes resolve_variable is available
-    
-    # Retrieve the physical Z3 variable of the redefined item
-    physical_var_key = f'{redefined_full_name}_physical'
-    if physical_var_key not in self.declarations: # Assumes self.declarations is available
-        raise NameError(f"Cannot redefine '{redefined_full_name}' because its physical variable was not found.")
-        
-    redefined_physical_var = self.declarations[physical_var_key]
-
-    # Return information about the redefinition to the parent visitor
-    # The parent (visit_DataDescriptionEntryFormat1) will use this to link
-    # the new logical variable to the existing physical variable.
-    return {
-        'redefines': True,
-        'target_physical_var': redefined_physical_var
-    }
 
 #================================================================================
-# Class C Visitor 3: DataRenamesClause
-#================================================================================
-
-# Grammar Rule:
-# DataRenamesClause : RENAMES QualifiedDataName ((THROUGH | THRU) QualifiedDataName)? ;
-
-# ------------------------------------------------------------------------------
-# Original Generated Visitor (Class C)
-# ------------------------------------------------------------------------------
-# The LLM explicitly marked this as "Not implemented in this phase".
-# RENAMES creates a new logical view over a range of memory, potentially across
-# multiple data items, making it complex to model symbolically without explicit
-# memory layout knowledge.
-def visit_DataRenamesClause_original(self, node: ASTNode):
-    source_text = _get_node_text(node)
-    print(f"[WARNING] The RENAMES clause is not yet supported and will be ignored. Clause: '{source_text}'")
-    return None
-
-# ------------------------------------------------------------------------------
-# Corrected Visitor
-# ------------------------------------------------------------------------------
-# Correcting RENAMES would involve creating a new Z3 logical variable that
-# represents a slice of an existing BitVec (physical memory) or a composite of
-# multiple BitVecs, depending on the `THROUGH` clause. This requires detailed
-# knowledge of the memory layout of the renamed items.
-def visit_DataRenamesClause_corrected(self, node: ASTNode):
-    # This is a complex feature that typically requires mapping a new logical
-    # data item to a potentially non-contiguous or partial section of existing
-    # physical memory, or even a range spanning multiple existing data items.
-    # For a full correction, we would need:
-    # 1. To resolve the start QualifiedDataName to its physical Z3 variable and bit offset.
-    # 2. To resolve the optional end QualifiedDataName (if THRU is used) for the end bit offset.
-    # 3. Create a new Z3 BitVec variable for the renamed item.
-    # 4. Add constraints to link this new BitVec to the relevant slice(s) of the original BitVec(s).
-    
-    # Given the complexity, a simplified correction might involve:
-    source_text = _get_node_text(node)
-    print(f"[INFO] RENAMES clause '{source_text}' detected. Modeling as a direct alias for the starting item for now.")
-
-    # Get the first QualifiedDataName
-    qdn_nodes = _get_children(node, "QualifiedDataName")
-    if not qdn_nodes:
-        print(f"[ERROR] RENAMES clause '{source_text}' missing QualifiedDataName.")
-        return None
-
-    # Resolve the full name of the starting data item
-    starting_data_name = self.visit(qdn_nodes[0]) # Assumes self.visit resolves QDN
-    
-    # A full implementation would create a new logical variable and link it
-    # to the specified memory range. For this example, we'll return the starting
-    # data item's logical variable, effectively treating RENAMES as a simple alias
-    # for the first part of the renamed area.
-    if starting_data_name in self.declarations:
-        return self.declarations[starting_data_name]
-    else:
-        print(f"[ERROR] Could not resolve starting data item '{starting_data_name}' for RENAMES.")
-        return None
-
-#================================================================================
-# Class C Visitor 4: DataValueIntervalTo
+# Class C Visitor 2: DataValueIntervalTo
 #================================================================================
 
 # Grammar Rule:
@@ -221,7 +113,7 @@ def visit_DataValueIntervalTo_corrected(self, node: ASTNode):
     return z3_literal_to
 
 #================================================================================
-# Class C Visitor 5: RelationCombinedCondition
+# Class C Visitor 3: RelationCombinedCondition
 #================================================================================
 
 # Grammar Rule:
@@ -276,7 +168,7 @@ def visit_RelationCombinedCondition_corrected(self, node: ASTNode):
     return current_expr
 
 #================================================================================
-# Class C Visitor 6: Abbreviation
+# Class C Visitor 4: Abbreviation
 #================================================================================
 
 # Grammar Rule:
@@ -331,52 +223,3 @@ def visit_Abbreviation_corrected(self, node: ASTNode, previous_lhs_expr, previou
         result_expr = z3.Not(result_expr)
     
     return result_expr
-
-#================================================================================
-# Class C Visitor 7: generic_visit
-#================================================================================
-
-# This is not a grammar rule but a fallback mechanism. Its presence
-# in Class C implies that the LLM failed to generate a specific visitor
-# for some grammar rules, leading to the generic visitor being hit.
-
-# ------------------------------------------------------------------------------
-# Original Generated Visitor (Class C)
-# ------------------------------------------------------------------------------
-# The generic_visit method is meant as a fallback. However, if too many
-# nodes fall into this, it indicates missing semantic understanding.
-def generic_visit_original(self, node: ASTNode) -> Any:
-    """Default visitor for structural/unhandled nodes. It just visits all children."""
-    result = None
-    for child in node.get("Children", []):
-        child_result = self.visit(child)
-        if child_result is not None and result is None:
-            result = child_result
-    return result
-
-# ------------------------------------------------------------------------------
-# Corrected Visitor
-# ------------------------------------------------------------------------------
-# A "corrected" generic_visit would imply that all specific grammar rules
-# have dedicated visitors, and the generic_visit is truly only for AST structural
-# nodes that don't have direct semantic implications.
-# For a Class C context, the correction means reducing its usage by implementing
-# specific visitors for previously unhandled nodes. Here, we'll modify it to
-# explicitly warn if it's hit for a node that *should* have a semantic visitor.
-def generic_visit_corrected(self, node: ASTNode) -> Any:
-    """
-    Corrected default visitor. Warns for unhandled semantic nodes.
-    """
-    node_type = node.get('Node', 'UNKNOWN')
-    # FIX: Add a warning for semantic nodes that should have a specific visitor
-    # but fell through to the generic one. This implies a gap in the LLM-generated visitors.
-    # We might maintain a list of node types that are purely structural versus semantic.
-    if node_type not in ["Statement", "Paragraphs", "ProgramUnit", "DataDivisionSection", "IfThen", "IfElse", "MultDivs", "Powers", "Basis", "Condition", "CombinableCondition", "SimpleCondition", "RelationCondition", "QualifiedDataName", "QualifiedInData", "Literal", "Argument"]:
-        print(f"[WARNING] generic_visit_corrected: No specific visitor for semantic node type '{node_type}'. Processing children generically.")
-
-    result = None
-    for child in node.get("Children", []):
-        child_result = self.visit(child)
-        if child_result is not None and result is None:
-            result = child_result
-    return result
