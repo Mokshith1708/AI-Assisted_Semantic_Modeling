@@ -24,21 +24,10 @@ This directory contains the core logic for the test case generation, sample COBO
 #### `test_case_generation/cobol_samples/`
 
 *   **Description:** Contains various sample COBOL programs (`.cbl` files) used for testing, demonstration, and evaluating the semantic modeling and test generation process. These samples range in complexity and demonstrate different COBOL features.
-    *   `ComplexTest.cbl`
-    *   `EmployeeBonusEvaluation.cbl`
-    *   `ExtendedLoanRiskAssessment.cbl`
-    *   `LoanApprovalCheckAdvanced.cbl`
-    *   `LoanEligibilityCheck.cbl`
-    *   `LoginValidator.cbl`
-    *   `SimpleBonusEval.cbl`
 
 #### `test_case_generation/output/`
 
-*   **Description:** Stores the output artifacts generated during the test case generation process.
-    *   `ast.json`: The Abstract Syntax Tree (AST) representation of a sample COBOL program in JSON format.
-    *   `cfg.json`: The Control Flow Graph (CFG) of the COBOL program, representing all possible execution paths.
-    *   `cfg_ast_paths.json`: Maps the paths identified in the CFG back to the corresponding nodes in the AST, providing detailed execution traces.
-    *   `test_inputs.json`: The final generated test inputs, derived from solving Z3 constraints for various execution paths.
+*   **Description:** Sample output artifacts generated during the test case generation process.
 
 #### `test_case_generation/visitors/`
 
